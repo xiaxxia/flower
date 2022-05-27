@@ -114,9 +114,10 @@ class TasksView(BaseHandler):
         capp = self.application.capp
 
         time = 'natural-time' if app.options.natural_time else 'time'
+
         if capp.conf.CELERY_TIMEZONE:
             time += '-' + str(capp.conf.CELERY_TIMEZONE)
-
+        # 这里加个else print点东西就能发现不对劲
         self.render(
             "tasks.html",
             tasks=[],
